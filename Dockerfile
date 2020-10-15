@@ -26,6 +26,7 @@ RUN apk del curl && \
 EXPOSE 8080
 
 COPY startup.sh /opt/startup.sh
+COPY ./target/hello-1.0.war /opt/tomcat/webapps/
 
 ENTRYPOINT /opt/startup.sh
 
