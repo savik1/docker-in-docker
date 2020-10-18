@@ -14,7 +14,7 @@ RUN apk -U upgrade --update && \
 RUN mkdir -p /opt
 
 # install tomcat
-RUN curl -jkSL -o /tmp/apache-tomcat.tar.gz http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+RUN curl -jkSL -o /tmp/apache-tomcat.tar.gz https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     gunzip /tmp/apache-tomcat.tar.gz && \
     tar -C /opt -xf /tmp/apache-tomcat.tar && \
     ln -s /opt/apache-tomcat-$TOMCAT_VERSION $CATALINA_HOME
