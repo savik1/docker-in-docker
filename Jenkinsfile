@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'buid_alpine_maven:latest'
+            image 'buid_docker_image:latest'
+            args "-v /var/run/docker.sock:/var/run/docker.sock"
         }
     }
     stages {
@@ -10,7 +11,7 @@ pipeline {
                 git 'https://github.com/savik1/boxfuse-sample-java.git'
             }
         }
-        stage('Build jar') {
+        stage('Build war') {
             steps {
                 sh 'mvn package'
             }
@@ -18,7 +19,7 @@ pipeline {
         stage('Make docker image') {
             steps {
                 git 'https://github.com/savik1/docker-tomcat.git'
-                // docker build
+                sh 'docker build -t myweb .'
                 // docker tag
                 // docker login
                 // docker push
