@@ -1,1 +1,3 @@
-
+FROM maven:3.5.4-alpine
+RUN apk add --update docker
+WORKDIR /home/user
